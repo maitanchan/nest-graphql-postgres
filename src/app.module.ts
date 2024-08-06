@@ -12,12 +12,12 @@ import { BooksModule } from './books/books.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
 
       driver: ApolloDriver,
+
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
 
     }),
 
     TypeOrmModule.forRoot({
-
       type: 'postgres',
       host: 'localhost',
       port: 5432,
@@ -25,7 +25,6 @@ import { BooksModule } from './books/books.module';
       password: '20d191080',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true
-
     }),
 
     BooksModule

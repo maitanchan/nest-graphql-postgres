@@ -12,16 +12,12 @@ export class BooksService {
 
     async addBook(addBookInput: AddBookInput): Promise<Book> {
 
-        const existingBook = await this.bookRepository.findOne({
-
-            where: {
-                title: addBookInput.title
-            }
-
-        })
+        const existingBook = await this.bookRepository.findOne({ where: { title: addBookInput.title } })
 
         if (existingBook) {
+
             throw new ConflictException("Book already exists")
+
         }
 
         const newBook = this.bookRepository.create(addBookInput)
@@ -34,16 +30,12 @@ export class BooksService {
 
     async updateBook(updateBookInput: UpdateBookInput): Promise<Book | null> {
 
-        const book = await this.bookRepository.findOne({
-
-            where: {
-                id: updateBookInput.id
-            }
-
-        })
+        const book = await this.bookRepository.findOne({ where: { id: updateBookInput.id } })
 
         if (!book) {
+
             throw new NotFoundException('Book Not Found ')
+
         }
 
         book.title = updateBookInput.title

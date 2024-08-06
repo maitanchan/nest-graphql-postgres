@@ -6,13 +6,14 @@ import { Book } from "./entities/book.entity";
 
 @Module({
 
-    imports: [
-        TypeOrmModule.forFeature([Book])
-    ],
+    imports: [TypeOrmModule.forFeature([Book])],
 
     providers: [
+
         BooksResolver,
+
         BooksService
+
     ]
 
 })
